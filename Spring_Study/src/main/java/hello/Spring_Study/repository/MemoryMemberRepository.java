@@ -6,8 +6,15 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
+import org.springframework.stereotype.Repository;
+
 import hello.Spring_Study.domain.Member;
 
+// @Repository 자동으로 스프링 컨테이너에 스프링 빈으로 자동 등록 된다.
+// 컴포넌트 스켄 방식.
+// 싱글톤 객체로 만들어진다 (스프링 빈).
+
+@Repository
 public class MemoryMemberRepository implements MemberRepository{
 
 	private static Map<Long, Member> store = new HashMap<>(); 

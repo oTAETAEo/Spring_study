@@ -25,12 +25,16 @@ public class MemberServiceTest {
 	// 아래 코드는 테스트 메서드가 실행 되기 전에 먼저 실행해서 의존성을 낮추기 위해 계속 객체를 만든다.
 	// 이것을 DI(Dependency Injection) 디펜던시 인젝션 이라고 한다.
 	
+	// @BeforeEach는 테스트 메서드 하나가 시작하기 전에 먼저 실행 (반복)
+	// 테스트 메서드 하나가 실행되기 전에 미리 실행이 되어 다른 테스트 코드에서 만들어진 객체를 사용하지 않는다.
 	@BeforeEach
 	public void beforEach() {
 		memberRepository = new MemoryMemberRepository();
 		memberService = new MemberService(memberRepository); 
 	}
 	
+	// @AfterEach는 테스트 메서드 하나가 끌나면 실행 (반복)
+	// 테스트 메서드 하나가 끌나면 실행되어 이전 데이터 값을 모두 지운다.
 	@AfterEach 
 	public void afterEach() {
 		memberRepository.clearStore();
