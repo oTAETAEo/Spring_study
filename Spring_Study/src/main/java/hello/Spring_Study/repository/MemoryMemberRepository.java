@@ -14,7 +14,7 @@ import hello.Spring_Study.domain.Member;
 // 컴포넌트 스켄 방식.
 // 싱글톤 객체로 만들어진다 (스프링 빈).
 
-@Repository
+// 예제의 가상의 시나라오(아직 DB가 정해지지 않은 시나리오) 때문에 메모리에 잠깐 저장 한다.
 public class MemoryMemberRepository implements MemberRepository{
 
 	private static Map<Long, Member> store = new HashMap<>(); 
