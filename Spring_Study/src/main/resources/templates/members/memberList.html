@@ -1,0 +1,28 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+
+<div class="/container">
+	<div>
+		<table>
+			<thead>
+			<tr>
+				<th>#</th>
+				<th>이름</th>
+			</tr>
+			</thead>
+			<tbody>
+			<!-- th:each는 반복자 @Controller에서 넘겨준 List의 값을 반복해서 출력.   -->
+			<!--  th:each="변수 : ${컬랙션}" -->
+			<tr th:each="mamber : ${members}">
+				<td th:text="${mamber.id}"></td>
+				<td th:text="${mamber.name}"></td>
+			</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
+
+
+</body>
+</html>

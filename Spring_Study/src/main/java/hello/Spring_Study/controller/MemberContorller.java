@@ -36,25 +36,33 @@ public class MemberContorller {
 		this.memberService = memberService;
 	}
 	
+	// /members/new 이 URL로 접속하면 templates에 있는 members/createMemberForm.html을 뿌려준다.
 	@GetMapping("/members/new")
 	public String createForm() {
 		return "members/createMemberForm";
 	}
 	
-	@PostMapping("members/new")
+	
+	@PostMapping("/members/new")
 	public String create(MemberForm form) {
+		// 받아온 객체를 옮겨 저장.
 		Member member = new Member();
 		member.setName(form.getName());
 	
 		memberService.join(member);
 		
+		// redirect:/ 초기 화면으로 돌아가라는 코드.
 		return "redirect:/";
 	}
 
+	// /members 이 URL로 접속하면 
 	@GetMapping("/members")
 	public String list(Model model) {
+		// 객체의 이름을 Array List로 리턴 받는다.
 		List<Member> members = memberService.findMembers();
-		model.addAttribute(attributeName:"members",members);
+		// Controller에서 사용자에게 응답할 View를 생성할 때 Model을 이용하여 View에 데이터를 전달하는 방법 addAttribute().
+		model.addAttribute("members", members);
+		return "members/memberList";
 	}
 	
 }

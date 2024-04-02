@@ -13,6 +13,7 @@ import hello.Spring_Study.repository.MemberRepository;
 // 컴포넌트 스켄 방식 (자동 의존 관계 설정).
 // 싱글톤 객체로 만들어진다 (스프링 빈).
 
+//@Service
 public class MemberService {
 	
 	private final MemberRepository memberRepository;
@@ -25,6 +26,7 @@ public class MemberService {
 	// @Autowired 필요한 의존 객체의 “타입"에 해당하는 빈을 찾아 주입한다.
 	// 의존성 주입을 할 대상을 찾지 못한다면 애플리케이션 구동에 실패한다.
 	// 이 코드에서는 스프링 컨테이너에서 MemberRepository 타입에 맞는 스프링 빈을 찾아서 넣어주는 코드 없다면 구동 실패.
+	@Autowired 
 	public MemberService(MemberRepository memberRepository) {
 		this.memberRepository = memberRepository;
 	}	
