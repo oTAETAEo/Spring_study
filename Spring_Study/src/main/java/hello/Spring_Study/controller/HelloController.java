@@ -14,7 +14,7 @@ public class HelloController {
 		model.addAttribute("data","최태현");
 		return "hello";
 	}
-	
+
 	@GetMapping("Blog")
 	public String Blog(@RequestParam("name") String name, Model model) {
 		model.addAttribute("name",name);
@@ -28,7 +28,7 @@ public class HelloController {
 		hello.setName(name);
 		return hello;
 	}
-	
+
 	static class Hello{
 		private String name;
 
@@ -40,5 +40,5 @@ public class HelloController {
 			this.name = name;
 		}
 	}
-	
+
 }

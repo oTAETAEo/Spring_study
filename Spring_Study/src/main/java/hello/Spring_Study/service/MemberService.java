@@ -30,21 +30,7 @@ public class MemberService {
 	public MemberService(MemberRepository memberRepository) {
 		this.memberRepository = memberRepository;
 	}	
-	
-	// (필드 의존관계 주입)
-	// 필드주입 방법. 별로 좋지는 않다.
-//	@Autowired private MemberRepository memberRepository;
 
-	// (setter 의존관계 주입)
-	// 한번 세팅하고 거의 바꿀일이 없는데 계속 public 상태로 있어야 한다.
-	// 보안에 취약해진다.
-
-//	private MemberRepository memberRepository;
-
-//	public void setMemberService(MemberRepository memberRepository) {
-//		this.memberRepository = memberRepository;
-//	}	
-	
 	/**
 	 * 회원가입
 	 */
@@ -56,10 +42,7 @@ public class MemberService {
 		return member.getId();
 	}
 
-	private void validateDuplicateMember(Member member) {
-		// ifPresent 위에서 findByName을 해서 이미 있는 객체인지 확인 한다.
-		// 없다면 null을 리턴한다.
-		// ifPresent는 result이 변수에 값이 있으면 true (실행), 없으면 false (실행x)
+	private void validateDuplicateMember(Member member){
 		memberRepository.findByName(member.getName())
 		.ifPresent(t -> {
 			throw new IllegalStateException("이미 존재하는 회원입니다.");
